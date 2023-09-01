@@ -10,6 +10,8 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
+          filters:
+            - AuthFilter
         - id: HOTEL-SERVICE
           uri: lb://HOTEL-SERVICE
           predicates:
@@ -18,6 +20,10 @@ spring:
           uri: lb://CALIFICACION-SERVICE
           predicates:
             - Path=/ratings/**
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth/**
 eureka:
   instance:
     prefer-ip-address: true
